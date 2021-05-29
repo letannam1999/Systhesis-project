@@ -78,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                         });
                         z= "Success";
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("username",id.getText().toString());
+                        intent.putExtra("password",pass.getText().toString());
                         startActivity(intent);
                         finish();
                     } else {
