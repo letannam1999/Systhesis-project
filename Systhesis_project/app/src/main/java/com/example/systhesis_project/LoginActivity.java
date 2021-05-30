@@ -54,7 +54,8 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            con = connectionClass(ConnectionClass.un.toString(),ConnectionClass.pass.toString(),ConnectionClass.db.toString(),ConnectionClass.ip.toString());
+            con = connectionClass(ConnectionClass.un.toString(),ConnectionClass.pass.toString(),
+                    ConnectionClass.db.toString(),ConnectionClass.ip.toString());
             if(con==null){
                 runOnUiThread(new Runnable() {
                     @Override
