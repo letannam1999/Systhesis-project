@@ -1,5 +1,7 @@
 package com.example.systhesis_project;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,78 +14,64 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.systhesis_project.Connection.ConnectionClass;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
-import java.sql.DriverManager;
+public class ChangePassActivity extends AppCompatActivity {
 
-public class ViewAccount extends AppCompatActivity {
-
-    EditText edEmail,edPhone;
-    TextView tvStatus,tvFullName;
-    Button btBack,btUpdate;
+    Button btnBack, btnUpdate;
+    EditText oldPass, newPass, rePass;
+   // TextView mypass;
     Connection con;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_account);
+        setContentView(R.layout.activity_change_pass);
+        btnBack=(Button)findViewById(R.id.back_button);
+        btnUpdate=(Button)findViewById(R.id.submit_button);
+        oldPass=(EditText)findViewById(R.id.currentPass);
+        newPass=(EditText)findViewById(R.id.newPass);
+        rePass=(EditText)findViewById(R.id.reEnterPass);
+   //     mypass=(TextView)findViewById(R.id.mypass);
+        String userPass = getIntent().getStringExtra("pword");
+//        mypass.setText(userPass);
 
-        String userName = getIntent().getStringExtra("uname");
-        String password = getIntent().getStringExtra("pword");
-
-        edEmail=(EditText)findViewById(R.id.email);
-        edPhone=(EditText)findViewById(R.id.phone);
-        tvStatus=(TextView)findViewById(R.id.status);
-        tvFullName=(TextView)findViewById(R.id.accountName);
-        btBack=(Button)findViewById(R.id.backMain);
-        btUpdate=(Button)findViewById(R.id.updateInfo);
-
-        con = connectionClass(ConnectionClass.un.toString(),ConnectionClass.pass.toString(),
-                ConnectionClass.db.toString(),ConnectionClass.ip.toString());
-        String sql = "SELECT * FROM Student WHERE StudentId = '" + userName + "' AND Password ='" + password + "'";
-        try{
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            while(rs.next()){
-                tvFullName.setText(rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5));
-                edEmail.setText(rs.getString(7).toString());
-                edPhone.setText(rs.getString(8).toString());
-                tvStatus.setText(rs.getString(10).toString());
-            }
-            con.close();
-        }catch (Exception e){
-            Log.e("SQL Error: ", e.getMessage());
-        }
-        btBack.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ViewAccount.this,MainActivity.class);
-                intent.putExtra("username",userName);
-                intent.putExtra("password",password);
+                Intent intent = new Intent(ChangePassActivity.this,MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        btUpdate.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new ViewAccount.updateAccount().execute("");
+                if(oldPass.getText().toString().equals("")||newPass.getText().toString().equals("")
+                        ||rePass.getText().toString().equals("")){
+                    oldPass.setText("");
+                    newPass.setText("");
+                    rePass.setText("");
+                    Toast.makeText(ChangePassActivity.this,"Please input all fields",Toast.LENGTH_LONG).show();
+                }else if(oldPass.getText().toString().equals(userPass)
+                        && newPass.getText().toString().equals(rePass.getText().toString())){
+                    new ChangePassActivity.updatePassword().execute("");
+                }else{
+                    oldPass.setText("");
+                    newPass.setText("");
+                    rePass.setText("");
+                    Toast.makeText(ChangePassActivity.this,"Your information you input was wrong",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
-    public class updateAccount extends AsyncTask<String, String, String>{
-
+    public class updatePassword extends AsyncTask<String, String , String>{
         String userName = getIntent().getStringExtra("uname");
-        String password = getIntent().getStringExtra("pword");
 
         String z = null;
         Boolean isSuccess = false;
@@ -102,26 +90,23 @@ public class ViewAccount extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(ViewAccount.this,"Check Internet Connection",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ChangePassActivity.this,"Check Internet Connection",Toast.LENGTH_LONG).show();
                     }
                 });
                 z = "On Internet Connection";
             }else {
                 try {
-                    String sql = "UPDATE Student SET Email = '" + edEmail.getText().toString() + "', Phone ='"
-                            + edPhone.getText().toString() + "' WHERE StudentId='"+userName+"' AND Password ='"+password+"'";
+                    String sql = "UPDATE Student SET Password = '"+newPass.getText().toString()+"' WHERE StudentId='"+userName+"' AND Password ='"+oldPass.getText().toString()+"'";
                     Statement statement = con.createStatement();
                     statement.executeUpdate(sql);
                     con.close();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(ViewAccount.this,"Update information success",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ChangePassActivity.this,"Update password success please login again",Toast.LENGTH_LONG).show();
                         }
                     });
-                    Intent intent = new Intent(ViewAccount.this, MainActivity.class);
-                    intent.putExtra("username",userName);
-                    intent.putExtra("password",password);
+                    Intent intent = new Intent(ChangePassActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 } catch (Exception e) {

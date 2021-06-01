@@ -39,6 +39,17 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnchangepass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChangePassActivity.class);
+                intent.putExtra("uname",userName);
+                intent.putExtra("pword",password);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
