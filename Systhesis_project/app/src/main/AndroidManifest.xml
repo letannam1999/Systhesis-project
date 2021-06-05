@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,8 +15,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Systhesis_project">
-        <activity android:name=".ChangePassActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".CheckAttendance"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".QRCodeScan"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ChangePassActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:parentActivityName=".LoginActivity" />

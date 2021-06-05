@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("uname",userName);
                 intent.putExtra("pword",password);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -47,7 +46,16 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("uname",userName);
                 intent.putExtra("pword",password);
                 startActivity(intent);
-                finish();
+            }
+        });
+
+        btncheckattendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, QRCodeScan.class);
+                intent.putExtra("uname",userName);
+                intent.putExtra("pword",password);
+                startActivity(intent);
             }
         });
     }

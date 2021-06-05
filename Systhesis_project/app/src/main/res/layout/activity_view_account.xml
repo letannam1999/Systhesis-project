@@ -102,10 +102,5 @@
             android:text="Back"
             android:textSize="20dp" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/mypass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="wwwwww"
-        />
+
 </LinearLayout>

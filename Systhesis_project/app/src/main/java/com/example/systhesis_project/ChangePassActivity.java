@@ -24,25 +24,26 @@ public class ChangePassActivity extends AppCompatActivity {
 
     Button btnBack, btnUpdate;
     EditText oldPass, newPass, rePass;
-   // TextView mypass;
     Connection con;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pass);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnBack=(Button)findViewById(R.id.back_button);
         btnUpdate=(Button)findViewById(R.id.submit_button);
         oldPass=(EditText)findViewById(R.id.currentPass);
         newPass=(EditText)findViewById(R.id.newPass);
         rePass=(EditText)findViewById(R.id.reEnterPass);
-   //     mypass=(TextView)findViewById(R.id.mypass);
         String userPass = getIntent().getStringExtra("pword");
-//        mypass.setText(userPass);
+        String userName = getIntent().getStringExtra("uname");
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ChangePassActivity.this,MainActivity.class);
+                intent.putExtra("username",userName);
+                intent.putExtra("password",userPass);
                 startActivity(intent);
                 finish();
             }
