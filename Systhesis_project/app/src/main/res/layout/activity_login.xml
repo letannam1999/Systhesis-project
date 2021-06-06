@@ -1,28 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#E6BF4A"
+    tools:context=".LoginActivity">
+
+
+    <ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="423dp"
+    android:layout_height="316dp"
+    app:srcCompat="@drawable/hutech" />
+
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Enter User Name Id"
-        android:id="@+id/userid"/>
+    android:id="@+id/userid"
+    android:layout_width="390dp"
+    android:layout_height="60dp"
+    android:layout_marginHorizontal="20dp"
+    android:drawableLeft="@drawable/username"
+    android:ems="10"
+    android:hint="  UserName"
+    android:inputType="textPersonName"
+    android:textSize="30dp" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Enter User Password"
-        android:id="@+id/userpass"/>
+    android:id="@+id/userpass"
+    android:layout_width="390dp"
+    android:layout_height="60dp"
+    android:layout_marginHorizontal="20dp"
+    android:drawableLeft="@drawable/pass"
+    android:ems="10"
+    android:hint="  Password"
+    android:inputType="textPassword"
+    android:textSize="30dp" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnlogin"
-        android:text="Login"
-        android:textSize="20dp"
-        android:layout_gravity="center"/>
+    android:id="@+id/btnlogin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="70dp"
+    android:layout_marginTop="30dp"
+    android:text="Login"
+    android:textSize="35dp" />
+
+
 </LinearLayout>
+

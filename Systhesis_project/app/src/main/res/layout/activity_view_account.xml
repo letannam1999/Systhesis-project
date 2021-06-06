@@ -1,106 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#0080ff"
     tools:context=".ViewAccount">
 
-    <TextView
-        android:id="@+id/accountName"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="30dp"/>
+
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Email:"
-            android:textSize="20dp" />
+            android:id="@+id/accountName"
+            android:text="INFORMATION"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/email"
+            android:drawableLeft="@drawable/gmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Phone:"
-            android:textSize="20dp" />
-
+            android:backgroundTint="#E6BF4A"
+            android:background="@color/white"
+            android:hint="Email:"
+            android:textColorHint="@color/teal_700"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
         <EditText
+            android:drawableLeft="@drawable/call"
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp" />
+            android:background="@color/white"
+            android:hint="Call phone:"
+            android:textColorHint="@color/teal_700"
+            android:backgroundTint="#E6BF4A"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Status:"
-            android:textSize="20dp" />
-
-        <TextView
+        <EditText
             android:id="@+id/status"
+            android:drawableLeft="@drawable/status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp" />
+            android:background="@color/white"
+            android:hint="Status:"
+            android:textColorHint="@color/teal_700"
+            android:backgroundTint="#E6BF4A"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/updateInfo"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Update"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/backMain"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Back"
+                android:textSize="20dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:gravity="center">
+</RelativeLayout>
 
-        <Button
-            android:id="@+id/updateInfo"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Update"
-            android:textSize="20dp" />
-
-        <Button
-            android:id="@+id/backMain"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Back"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-</LinearLayout>

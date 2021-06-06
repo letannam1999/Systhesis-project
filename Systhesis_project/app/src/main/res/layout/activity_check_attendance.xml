@@ -1,140 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#0080ff"
     tools:context=".CheckAttendance">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Attendance Checking"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Lecturer Name:"
-        android:textSize="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"/>
-
-    <TextView
-        android:id="@+id/lecturerName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Student Id:"
-        android:textSize="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/studentId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Course Name:"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/courseName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/accountName"
+            android:text="ATTENDANCE CHECK"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
             android:textStyle="bold"
-            android:text="Date:"
-            android:textSize="20dp" />
+            android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/dateNow"
+            android:drawableLeft="@drawable/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lecturer Name:"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/lecturerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp">
-
+            android:background="@color/white"
+            android:backgroundTint="#E6BF4A"
+            android:hint="Lecturer Name"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
         <TextView
-            android:layout_width="70dp"
+            android:drawableLeft="@drawable/pass"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Shift:"
-            android:textSize="20dp" />
-
+            android:text="Student ID:"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
         <TextView
-            android:id="@+id/shift"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp">
-
-        <Button
-            android:id="@+id/confirm_checkatendance"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Submit"
-            android:textSize="15dp"
+            android:id="@+id/studentId"
+            android:backgroundTint="#E6BF4A"
+            android:background="@color/white"
+            android:hint="Student Id"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
             />
 
-        <Button
-            android:id="@+id/backToMain"
-            android:layout_width="100dp"
+        <TextView
+            android:drawableLeft="@drawable/status"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Course Name:"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/courseName"
+            android:background="@color/white"
+            android:hint="Course Name"
+            android:backgroundTint="#E6BF4A"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:drawableLeft="@drawable/nsinh"
+                android:id="@+id/dateNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:hint="Date:"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="#E6BF4A"
+                android:drawablePadding="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:drawableLeft="@drawable/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/shift"
+                android:background="@color/white"
+                android:hint="Shift::"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:backgroundTint="#E6BF4A"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
-            android:textSize="15dp"
-            android:text="Cancel" />
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/confirm_checkatendance"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Submit"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/backToMain"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Back"
+                android:textSize="20dp" />
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+</RelativeLayout>
+

@@ -1,104 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#0080ff"
     tools:context=".ChangePassActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CHANGE PASSWORD"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="40dp"/>
 
-
-    <TextView
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Old Password:"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-<!--    <TextView-->
-<!--        android:id="@+id/mypass"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="wwwwww"-->
-<!--        />-->
-
-    <EditText
-        android:id="@+id/currentPass"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Input your current password"
-        android:textSize="20dp"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Password:"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-    <EditText
-        android:id="@+id/newPass"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Input your new password"
-        android:inputType="textPassword"
-        android:textSize="20dp"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm Password:"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-    <EditText
-        android:id="@+id/reEnterPass"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Input your new password again"
-        android:textSize="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/submit_button"
-            android:layout_width="120dp"
+        <EditText
+            android:id="@+id/accountName"
+            android:text="CHANGE PASSWORD"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp" />
+        <TextView
+            android:drawableLeft="@drawable/pass"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Old Password:"
+            android:inputType="textPassword"
             android:textSize="20dp"
-            android:text="Submit"
-            android:gravity="center"/>
+            android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/back_button"
-            android:layout_width="120dp"
+        <EditText
+            android:id="@+id/currentPass"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:backgroundTint="#E6BF4A"
+            android:background="@color/white"
+            android:hint="Input your current password"
+            android:textColor="@color/black"
+            android:textColorHint=" #b3b3b3"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
+
+
+        <TextView
+            android:drawableLeft="@drawable/pass"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Password:"
             android:textSize="20dp"
-            android:text="Back"
-            android:gravity="center"/>
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/newPass"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Input your new password"
+            android:inputType="textPassword"
+            android:backgroundTint="#E6BF4A"
+            android:textColorHint=" #b3b3b3"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            />
+
+        <TextView
+            android:drawableLeft="@drawable/pass"
+
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password:"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/reEnterPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:hint="Input your new password again"
+            android:inputType="textPassword"
+            android:textColorHint=" #b3b3b3"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:backgroundTint="#E6BF4A"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Submit"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Back"
+                android:textSize="20dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
+</RelativeLayout>
 
-</LinearLayout>

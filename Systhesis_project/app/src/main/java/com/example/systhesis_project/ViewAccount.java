@@ -24,7 +24,7 @@ import java.sql.DriverManager;
 
 public class ViewAccount extends AppCompatActivity {
 
-    EditText edEmail,edPhone;
+    EditText edEmail,edPhone,edDob;
     TextView tvStatus,tvFullName;
     Button btBack,btUpdate;
     Connection con;
@@ -41,6 +41,7 @@ public class ViewAccount extends AppCompatActivity {
 
         edEmail=(EditText)findViewById(R.id.email);
         edPhone=(EditText)findViewById(R.id.phone);
+//        edDob=(EditText)findViewById(R.id.dob);
         tvStatus=(TextView)findViewById(R.id.status);
         tvFullName=(TextView)findViewById(R.id.accountName);
         btBack=(Button)findViewById(R.id.backMain);
@@ -54,9 +55,10 @@ public class ViewAccount extends AppCompatActivity {
             ResultSet rs = statement.executeQuery(sql);
             while(rs.next()){
                 tvFullName.setText(rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5));
-                edEmail.setText(rs.getString(7).toString());
-                edPhone.setText(rs.getString(8).toString());
-                tvStatus.setText(rs.getString(10).toString());
+                edEmail.setText(rs.getString(7));
+                edPhone.setText(rs.getString(8));
+//                edDob.setText(rs.getString(9));
+                tvStatus.setText(rs.getString(10));
             }
             con.close();
         }catch (Exception e){
@@ -110,7 +112,8 @@ public class ViewAccount extends AppCompatActivity {
             }else {
                 try {
                     String sql = "UPDATE Student SET Email = '" + edEmail.getText().toString() + "', Phone ='"
-                            + edPhone.getText().toString() + "' WHERE StudentId='"+userName+"' AND Password ='"+password+"'";
+                            + edPhone.getText().toString() + "'" +
+                            "WHERE StudentId='"+userName+"' AND Password ='"+password+"'";
                     Statement statement = con.createStatement();
                     statement.executeUpdate(sql);
                     con.close();

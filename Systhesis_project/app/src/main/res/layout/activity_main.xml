@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/teal_200"
     tools:context=".MainActivity">
 
     <Button
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:id="@+id/btnViewAccount"
@@ -21,7 +22,7 @@
         android:layout_height="70dp"
         android:textSize="20dp"
         android:text="Change Password"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="40dp"/>
 
     <Button
         android:id="@+id/btnCheckAttendance"
@@ -29,7 +30,7 @@
         android:layout_height="70dp"
         android:textSize="20dp"
         android:text="Check Attendance"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="40dp"/>
 
 
 
