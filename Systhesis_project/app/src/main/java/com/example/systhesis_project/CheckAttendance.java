@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import com.example.systhesis_project.Connection.ConnectionClass;
 
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class CheckAttendance extends AppCompatActivity {
@@ -67,7 +69,7 @@ public class CheckAttendance extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //new CheckAttendance.checkAttendance().execute("");
+                new CheckAttendance.checkAttendance().execute("");
             }
         });
     }
@@ -76,7 +78,7 @@ public class CheckAttendance extends AppCompatActivity {
         con = connectionClass(ConnectionClass.un.toString(), ConnectionClass.pass.toString(),
                 ConnectionClass.db.toString(), ConnectionClass.ip.toString());
         String sql = "SELECT Lecturer.FirstName, Lecturer.MidName, Lecturer.LastName " +
-                "FROM Lecturer INNER JOIN Course ON Lecturer.LecturerId = Course.LecturerId" +
+                "FROM Lecturer INNER JOIN Course ON Lecturer.LecturerId = Course.LecturerId " +
                 "WHERE CourseId = '" + courseId + "'";
         String fullname = null;
         try {
@@ -96,7 +98,7 @@ public class CheckAttendance extends AppCompatActivity {
         con = connectionClass(ConnectionClass.un.toString(),ConnectionClass.pass.toString(),
                 ConnectionClass.db.toString(),ConnectionClass.ip.toString());
         String sql = "SELECT Subject.NameSubject " +
-                "FROM Subject INNER JOIN Course ON Subject.SubjectId = Course.SubjectId" +
+                "FROM Subject INNER JOIN Course ON Subject.SubjectId = Course.SubjectId " +
                 "WHERE CourseId = '" + courseId + "'";
         try{
             Statement statement = con.createStatement();
@@ -110,64 +112,64 @@ public class CheckAttendance extends AppCompatActivity {
         }
     }
 
-//    public class checkAttendance extends AsyncTask<String,String,String>{
-//        String userName = getIntent().getStringExtra("usname");
-//        String password = getIntent().getStringExtra("psword");
-//        String qrCode = getIntent().getStringExtra("qrcode");
-//        String classId = qrCode.substring(0,8);
-//        String subjectId = qrCode.substring(8,11);
-//        String courseId = classId.concat(subjectId);
-//        char shift = qrCode.charAt(11);
-//        String date = qrCode.substring(12);
-//
-//
-//        String z = null;
-//        Boolean isSuccess = false;
-//
-//        @Override
-//        protected void onPreExecute() { }
-//
-//        @Override
-//        protected void onPostExecute(String s) { }
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            con = connectionClass(ConnectionClass.un.toString(),ConnectionClass.pass.toString(),
-//                    ConnectionClass.db.toString(),ConnectionClass.ip.toString());
-//            if(con==null){
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Toast.makeText(CheckAttendance.this,"Check Internet Connection",Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//                z = "On Internet Connection";
-//            }else {
-//                try {
-//                    String sql = "INSERT INTO Attendance (CourseId, StudentId, Shift, Date, Status)" +
-//                            "VALUES ('"+courseId+"','"+userName+"','"+shift+"','"+ +"')";
-//                    Statement statement = con.createStatement();
-//                    statement.executeUpdate(sql);
-//                    con.close();
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            Toast.makeText(ViewAccount.this,"Update information success",Toast.LENGTH_LONG).show();
-//                        }
-//                    });
-//                    Intent intent = new Intent(ViewAccount.this, MainActivity.class);
-//                    intent.putExtra("username",userName);
-//                    intent.putExtra("password",password);
-//                    startActivity(intent);
-//                    finish();
-//                } catch (Exception e) {
-//                    isSuccess = false;
-//                    Log.e("SQL Error: ", e.getMessage());
-//                }
-//            }
-//            return z;
-//        }
-//    }
+    public class checkAttendance extends AsyncTask<String,String,String>{
+        String userName = getIntent().getStringExtra("usname");
+        String password = getIntent().getStringExtra("psword");
+        String qrCode = getIntent().getStringExtra("qrcode");
+        String classId = qrCode.substring(0,8);
+        String subjectId = qrCode.substring(8,11);
+        String courseId = classId.concat(subjectId);
+        String shift = qrCode.substring(11,12);
+        String date = qrCode.substring(12);
+        int studentId = Integer.parseInt(userName);
+
+        String z = null;
+        Boolean isSuccess = false;
+
+        @Override
+        protected void onPreExecute() { }
+
+        @Override
+        protected void onPostExecute(String s) { }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            con = connectionClass(ConnectionClass.un.toString(),ConnectionClass.pass.toString(),
+                    ConnectionClass.db.toString(),ConnectionClass.ip.toString());
+            if(con==null){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(CheckAttendance.this,"Check Internet Connection",Toast.LENGTH_LONG).show();
+                    }
+                });
+                z = "On Internet Connection";
+            }else {
+                try {
+                    String sql = "INSERT INTO Attendance (CourseId, StudentId, Shift, Date, Status)" +
+                            "VALUES ('"+courseId+"','"+studentId+"','"+shift+"','"+ date +"','Studying')";
+                    Statement statement = con.createStatement();
+                    statement.executeUpdate(sql);
+                    con.close();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(CheckAttendance.this,"Check Attendance Success",Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    Intent intent = new Intent(CheckAttendance.this, MainActivity.class);
+                    intent.putExtra("username",userName);
+                    intent.putExtra("password",password);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    isSuccess = false;
+                    Log.e("SQL Error: ", e.getMessage());
+                }
+            }
+            return z;
+        }
+    }
 
     @SuppressLint("NewApi")
     public java.sql.Connection connectionClass(String user, String password, String database, String server){
